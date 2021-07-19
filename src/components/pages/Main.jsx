@@ -2,15 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {fetchWeatherData} from '../../redux/actions/fetchWeatherData';
-import store from '../../redux/store';
 
 
 const Main = props => {
     const [city, setCity] = useState('');
-
-    useEffect(() => {
-
-    })
 
     const onHandleInput = event => {
         setCity(event.target.value)
@@ -26,6 +21,10 @@ const Main = props => {
                 <input onChange={onHandleInput} value={city} />
                 <button type='button' onClick={submitCity}>OK</button>
             </Form>
+            {props.today && props.week ?
+                <div>City: {props.today.city}</div> :
+                <div>Choose the city</div>
+            }
         </MainBody>
     );
 }
