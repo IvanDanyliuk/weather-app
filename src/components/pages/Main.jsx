@@ -25,6 +25,8 @@ const Main = props => {
                 <div>City: {props.today.city}</div> :
                 <div>Choose the city</div>
             }
+            {/* <img src={`http://openweathermap.org/img/w/${props.today.icon}.png`} alt="icon" /> */}
+            {/* <div>Sunrise: {props.today.sunrise}</div> */}
         </MainBody>
     );
 }

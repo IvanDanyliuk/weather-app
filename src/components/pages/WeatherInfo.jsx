@@ -7,10 +7,10 @@ const WeatherInfo = props => {
         <WeatherInfoBody>
             <MainInfo>
                 <CityName>
-
+                    {props.city}
                 </CityName>
                 <TempValue>
-
+                    {props.temp}
                 </TempValue>
                 
             </MainInfo>
