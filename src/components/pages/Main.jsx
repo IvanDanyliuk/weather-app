@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {fetchWeatherData} from '../../redux/actions/fetchWeatherData';
+import WeatherInfo from './WeatherInfo';
 
 
 const Main = props => {
+
     const [city, setCity] = useState('');
 
     const onHandleInput = event => {
@@ -13,7 +15,7 @@ const Main = props => {
     const submitCity = () => {
         props.fetchWeatherData(city);
         setCity('');
-    }
+    };
 
     return (
         <MainBody>
@@ -22,7 +24,7 @@ const Main = props => {
                 <button type='button' onClick={submitCity}>OK</button>
             </Form>
             {props.today && props.week ?
-                <div>City: {props.today.city}</div> :
+                <WeatherInfo data={props.today} /> :
                 <div>Choose the city</div>
             }
             {/* <img src={`http://openweathermap.org/img/w/${props.today.icon}.png`} alt="icon" /> */}

@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './App.css';
-import { fetchData } from './axios/fetch-data';
 import Layout from './components/layout/Layout';
 import Main from './components/pages/Main';
 
