@@ -20,6 +20,7 @@ export const fetchData = async city => {
 
     data.today = {
         city: todayData.data.name,
+        weatherType: todayData.data.weather[0].main,
         keyIndicators: [
             {title: 'Humidity', value: todayData.data.main.humidity, units: '%'},
             {title: 'Pressure', value: Math.round(todayData.data.main.pressure / 1.333), units: 'mm.m'},

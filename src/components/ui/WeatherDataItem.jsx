@@ -12,7 +12,8 @@ const WeatherDataItem = props => {
         'Wind Direction': faLocationArrow,
         'Feels Like': faTemperatureLow,
         'Visibility': faEye
-    }
+    };
+
     return (
         <WeatherDataItemBody>
             <WeatherDataIcon>
@@ -32,22 +33,29 @@ const WeatherDataItem = props => {
 
 const WeatherDataItemBody = styled.li`
     position: relative;
-    padding: 10px 0;
+    padding: 20px 0;
     width: 30%;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 `;
 
 const WeatherDataIcon = styled.div`
-
+    font-size: 20px;
 `;
 
 const WeatherDataValue = styled.h5`
-
+    margin: 0;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 200;
 `;
 
 const WeatherDataTitle = styled.h6`
-
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 200;
 `;
 
 
