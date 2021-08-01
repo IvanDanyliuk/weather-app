@@ -10,34 +10,34 @@ export const fetchData = async city => {
     const data = {
         today: '',
         week: ''
-    }
+    };
 
     let todayData = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8744ada665b095444259f2a3a6b4d0f4`);
     let weekData = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${geoData.lat}&lon=${geoData.lon}&appid=8744ada665b095444259f2a3a6b4d0f4`);
 
-    console.log('Today', todayData);
-    console.log('Week', weekData);
+    const { name, main, wind, visibility, sys, weather } = todayData.data;
+    const { hourly, daily } = weekData.data;
 
     data.today = {
-        city: todayData.data.name,
-        weatherType: todayData.data.weather[0].main,
+        city: name,
+        weatherType: weather[0].main,
         keyIndicators: [
-            {title: 'Humidity', value: todayData.data.main.humidity, units: '%'},
-            {title: 'Pressure', value: Math.round(todayData.data.main.pressure / 1.333), units: 'mm.m'},
-            {title: 'Wind Speed', value: Math.round((todayData.data.wind.speed * 10) / 2.237), units: 'm/s'},
-            {title: 'Wind Direction', value: convertWindDirection(todayData.data.wind.deg), units: ''},
-            {title: 'Feels Like', value: Math.round(todayData.data.main.feels_like - 273.15), units: 'C'},
-            {title: 'Visibility', value: todayData.data.visibility / 1000, units: 'km'}
+            {title: 'Humidity', value: main.humidity, units: '%'},
+            {title: 'Pressure', value: Math.round(main.pressure / 1.333), units: 'mm.m'},
+            {title: 'Wind Speed', value: Math.round((wind.speed * 10) / 2.237), units: 'm/s'},
+            {title: 'Wind Direction', value: convertWindDirection(wind.deg), units: ''},
+            {title: 'Feels Like', value: Math.round(main.feels_like - 273.15), units: 'C'},
+            {title: 'Visibility', value: visibility / 1000, units: 'km'}
         ],
-        sunrise: getTimeData(todayData.data.sys.sunrise * 1000),
-        sunset: getTimeData(todayData.data.sys.sunset * 1000),
-        temp: Math.round(todayData.data.main.temp - 273.15),
-        weatherDescr: todayData.data.weather[0].description,
-        icon: todayData.data.weather[0].icon,
-        hourly: mapWeatherData(weekData.data.hourly.slice(0, 24))
-    }
-    data.week = mapWeatherData(weekData.data.daily.slice(1));
+        sunrise: getTimeData(sys.sunrise * 1000),
+        sunset: getTimeData(sys.sunset * 1000),
+        temp: Math.round(main.temp - 273.15),
+        weatherDescr: weather[0].description,
+        icon: weather[0].icon,
+        hourly: mapWeatherData(hourly.slice(0, 24))
+    };
 
-    console.log(data);
+    data.week = mapWeatherData(daily.slice(1));
+
     return data;
-}
+};

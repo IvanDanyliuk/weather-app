@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const MainPageMessage = props => {
+const MainPageMessage = ({ data }) => {
     return (
         <MessageBody>
-            {props.data.today === null ? 'Search for a location...' : 'Location name is incorrect!'}
+            {data.today === null ? 'Search for a location...' : 'Location name is incorrect!'}
         </MessageBody>
     )
 }

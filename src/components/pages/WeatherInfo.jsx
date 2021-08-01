@@ -7,9 +7,9 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import ForecastDataList from './ForecastDataList';
 
 
-const WeatherInfo = props => {
+const WeatherInfo = ({ data }) => {
+    const {today, week} = data;
     const [isDay, setIsDay] = useState(true);
-
     const handleWeatherData = () => {
         setIsDay(!isDay);
     };
@@ -18,28 +18,28 @@ const WeatherInfo = props => {
         <WeatherInfoBody>
             <CityName>
                 <FontAwesomeIcon icon={faMapMarkerAlt} />
-                <span>{props.data.today.city}</span>
+                <span>{today.city}</span>
             </CityName>
             <MainInfo>
                 <WeatherData>
                     <TempValue>
-                        {props.data.today.temp}
+                        {today.temp}
                         <span>&deg;C</span> 
                     </TempValue>
                     <WeatherType>
-                        {props.data.today.weatherType}
+                        {today.weatherType}
                     </WeatherType>
                 </WeatherData>
                 <WeatherImage>
-                    <img src={`${process.env.PUBLIC_URL}/img/${props.data.today.icon}.png`} alt='img'></img>
+                    <img src={`${process.env.PUBLIC_URL}/img/${today.icon}.png`} alt='img'></img>
                 </WeatherImage>
             </MainInfo>
             <SunInfo>
-                <div>Sunrise: <span>{props.data.today.sunrise}</span></div>
-                <div>Sunset: <span>{props.data.today.sunset}</span></div>
+                <div>Sunrise: <span>{today.sunrise}</span></div>
+                <div>Sunset: <span>{today.sunset}</span></div>
             </SunInfo>
             <WeatherDetails>
-                {props.data.today.keyIndicators.map(item => {
+                {today.keyIndicators.map(item => {
                     return (
                         <WeatherDataItem
                             key={uuidv4()}
@@ -51,9 +51,11 @@ const WeatherInfo = props => {
                 })}
             </WeatherDetails>
             <Forecast>
-                <h3>{isDay ? 'Next 24 hours' : 'Week'}</h3>
-                <button onClick={handleWeatherData}>{isDay ? 'Show week forecast' : 'Show current forecast'}</button>
-                <ForecastDataList data={isDay ? props.data.today.hourly : props.data.week} />
+                <ForecastNav>
+                    <h3>{isDay ? 'Next 24 hours' : 'Week'}</h3>
+                    <button onClick={handleWeatherData}>{isDay ? 'Show week forecast' : 'Show current forecast'}</button>
+                </ForecastNav>
+                <ForecastDataList data={isDay ? today.hourly : week} />
             </Forecast>
         </WeatherInfoBody>
     )
@@ -137,9 +139,29 @@ const WeatherDetails = styled.ul`
 
 const Forecast = styled.div`
     position: relative;
+    padding: 20px;
     width: 100%;
     border-radius: 5px;
     background: linear-gradient(90deg, rgba(109,191,212,1) 0%, rgba(40,127,199,1) 100%);
+    box-sizing: border-box;
+`;
+
+const ForecastNav = styled.div`
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+
+    h3 {
+        margin: 0;
+        font-size: 26px;
+        color: rgb(255, 255, 255);
+    }
+
+    button {
+        height: 30px;
+    }
 `;
 
 

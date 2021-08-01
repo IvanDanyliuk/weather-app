@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTint, faCompass, faWind, faLocationArrow, faTemperatureLow, faEye } from '@fortawesome/free-solid-svg-icons';
 
 
-const WeatherDataItem = props => {
+const WeatherDataItem = ({ title, value, units }) => {
     const imageData = {
         'Humidity': faTint,
         'Pressure': faCompass,
@@ -17,14 +17,14 @@ const WeatherDataItem = props => {
     return (
         <WeatherDataItemBody>
             <WeatherDataIcon>
-                <FontAwesomeIcon icon={imageData[props.title]} />
+                <FontAwesomeIcon icon={imageData[title]} />
             </WeatherDataIcon>
             <WeatherDataValue>
-                {props.value}
-                <span> {props.units}</span>
+                {value}
+                <span> {units}</span>
             </WeatherDataValue>
             <WeatherDataTitle>
-                {props.title}
+                {title}
             </WeatherDataTitle>
         </WeatherDataItemBody>
     );

@@ -5,24 +5,25 @@ import { faTint, faCompass } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from 'uuid';
 
 
-const ForecastDataList = props => {
+const ForecastDataList = ({ data }) => {
     return (
         <ForecastDataListBody>
-            {props.data.map(item => {
+            {data.map(item => {
+                const { time, temp, icon, humidity, pressure } = item;
                 return (
                     <li key={uuidv4()}>
-                        <div>{item.time}</div>
-                        <div>{item.temp} &deg;C</div>
+                        <div>{time}</div>
+                        <div>{temp} &deg;C</div>
                         <div>
-                            <img src={`${process.env.PUBLIC_URL}/img/${item.icon}.png`} alt='img'></img>
+                            <img src={`${process.env.PUBLIC_URL}/img/${icon}.png`} alt='img'></img>
                         </div>
                         <div>
                             <FontAwesomeIcon icon={faTint} />
-                            {` ${item.humidity} %`}
+                            {` ${humidity} %`}
                         </div>
                         <div>
                             <FontAwesomeIcon icon={faCompass} />
-                            {` ${item.pressure} mm.m`}
+                            {` ${pressure} mm.m`}
                         </div>
                     </li>
                 )
@@ -36,7 +37,7 @@ const ForecastDataListBody = styled.ul`
     position: relative;
     width: 100%;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     list-style: none;
     font-size: 14px;
     color: rgb(255, 255, 255);
@@ -46,7 +47,7 @@ const ForecastDataListBody = styled.ul`
         position: relative;
         display: flex;
         justify-content: space-between;
-        
+
         div {
             text-align: left;
             &:first-child {

@@ -10,11 +10,9 @@ import WeatherInfo from './WeatherInfo';
 
 const Main = ({weather, fetchWeatherData}) => {
     const [city, setCity] = useState('');
-
     const onHandleInput = event => {
         setCity(event.target.value);
     }
-
     const submitCity = () => {
         if(city) {
             fetchWeatherData(city);
