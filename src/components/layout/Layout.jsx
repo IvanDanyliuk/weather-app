@@ -34,8 +34,8 @@ const Header = styled.header`
     justify-content: space-between;
     align-items: center;
     font-family: 'Nunito Sans';
-    background: rgb(107, 86, 253);
-    color: rgb(255, 255, 255);
+    background: rgb(255, 255, 255);
+    color: rgb(107, 86, 253);
     box-sizing: border-box;
     .logo {
         font-family: 'Fugaz One';
@@ -46,12 +46,12 @@ const Header = styled.header`
 
 const Content = styled.main`
     position: relative;
-    padding: 0 15%;
+    padding: 20px 15%;
     width: 100%;
     min-height: 90vh;
     font-family: 'Nunito Sans';
-    background: rgb(107, 86, 253);
-    color: rgb(255, 255, 255);
+    background: rgb(255, 255, 255);
+    color: rgb(101, 109, 112);
     box-sizing: border-box;
 `;
 

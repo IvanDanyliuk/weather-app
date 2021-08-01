@@ -6,7 +6,7 @@ export const mapWeatherData = data => {
     return data.map((dataItem, index) => {
         return {
             icon: dataItem.weather[0].icon,
-            temp: typeof dataItem === 'object' ? Math.round(dataItem.temp.day - 273.15) : Math.round(dataItem.temp - 273.15),
+            temp: dataItem.temp.day ? Math.round(dataItem.temp.day - 273.15) : Math.round(dataItem.temp - 273.15),
             time: data.length > 7 ? getTimeData(dataItem.dt * 1000) : days[index]
         };
     });

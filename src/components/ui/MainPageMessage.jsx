@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const MainPageMessage = props => {
     return (
         <MessageBody>
-            {props.data === null ? 'Choose the city...' : 'City name is incorrect!'}
+            {props.data.today === null ? 'Search for a location...' : 'Location name is incorrect!'}
         </MessageBody>
     )
 }

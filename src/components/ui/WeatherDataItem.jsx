@@ -33,7 +33,7 @@ const WeatherDataItem = props => {
 
 const WeatherDataItemBody = styled.li`
     position: relative;
-    padding: 20px 0;
+    padding: 30px 0;
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -47,8 +47,8 @@ const WeatherDataIcon = styled.div`
 const WeatherDataValue = styled.h5`
     margin: 0;
     padding: 10px 0;
-    font-size: 18px;
-    font-weight: 200;
+    font-size: 16px;
+    font-weight: 600;
 `;
 
 const WeatherDataTitle = styled.h6`
