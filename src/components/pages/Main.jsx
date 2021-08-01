@@ -40,8 +40,7 @@ const Main = ({weather, fetchWeatherData}) => {
 
 const mapStateToProps = state => {
     return {
-        weather: state.weather,
-        week: state.weather.week
+        weather: state.weather
     }
 }
 

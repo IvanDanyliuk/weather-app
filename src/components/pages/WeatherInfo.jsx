@@ -4,10 +4,16 @@ import WeatherDataItem from '../ui/WeatherDataItem';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import Forecast from './Forecast';
+import ForecastDataList from './ForecastDataList';
 
 
 const WeatherInfo = props => {
+    const [isDay, setIsDay] = useState(true);
+
+    const handleWeatherData = () => {
+        setIsDay(!isDay);
+    };
+
     return (
         <WeatherInfoBody>
             <CityName>
@@ -44,7 +50,11 @@ const WeatherInfo = props => {
                     )
                 })}
             </WeatherDetails>
-            <Forecast data={props.data} />
+            <Forecast>
+                <h3>{isDay ? 'Next 24 hours' : 'Week'}</h3>
+                <button onClick={handleWeatherData}>{isDay ? 'Show week forecast' : 'Show current forecast'}</button>
+                <ForecastDataList data={isDay ? props.data.today.hourly : props.data.week} />
+            </Forecast>
         </WeatherInfoBody>
     )
 };
@@ -63,7 +73,7 @@ const WeatherInfoBody = styled.div`
 const MainInfo = styled.div`
     position: relative;
     margin: 20px 0;
-    width: 50%;
+    width: 100%;
     padding: 10px 0;
     display: flex;
     justify-content: center;
@@ -123,6 +133,13 @@ const WeatherDetails = styled.ul`
     align-items: center;
     border-radius: 5px;
     background: rgb(236, 236, 236);
+`;
+
+const Forecast = styled.div`
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgba(109,191,212,1) 0%, rgba(40,127,199,1) 100%);
 `;
 
 
