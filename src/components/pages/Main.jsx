@@ -5,7 +5,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {fetchWeatherData} from '../../redux/actions/fetchWeatherData';
 import MainPageMessage from '../ui/MainPageMessage';
-import WeatherInfo from './WeatherInfo';
+const WeatherInfo = React.lazy(() => import('./WeatherInfo'));
 
 
 const Main = ({weather, fetchWeatherData}) => {

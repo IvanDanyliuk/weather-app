@@ -57,6 +57,7 @@ const Content = styled.main`
     background: rgb(255, 255, 255);
     color: rgb(101, 109, 112);
     box-sizing: border-box;
+    font-display: swap;
 
     @media (max-width: 768px) {
         padding: 10px;
