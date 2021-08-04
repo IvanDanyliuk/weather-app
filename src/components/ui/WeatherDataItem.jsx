@@ -41,7 +41,8 @@ const WeatherDataItemBody = styled.li`
 `;
 
 const WeatherDataIcon = styled.div`
-    font-size: 20px;
+    font-size: 30px;
+    color: rgb(132, 74, 198);
 `;
 
 const WeatherDataValue = styled.h5`

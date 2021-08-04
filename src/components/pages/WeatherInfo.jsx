@@ -11,7 +11,7 @@ const WeatherInfo = ({ data }) => {
     const {today, week} = data;
     const [isDay, setIsDay] = useState(true);
     const handleWeatherData = () => {
-        setIsDay(!isDay);
+;        setIsDay(!isDay);
     };
 
     return (
@@ -81,7 +81,7 @@ const MainInfo = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    background: linear-gradient(90deg, rgba(109,191,212,1) 0%, rgba(40,127,199,1) 100%);
+    background: linear-gradient(90deg, rgba(146,86,215,1) 0%, rgba(51,168,201,1) 100%);
     color: rgb(255, 255, 255);
     box-sizing: border-box;
 `;
@@ -105,6 +105,10 @@ const TempValue = styled.div`
     font-size: 56px;
     font-weight: 600;
     line-height: 56px;
+
+    @media (max-width: 320px) {
+        font-size: 46px;
+    }
 `;
 
 const WeatherType = styled.div`
@@ -128,13 +132,13 @@ const WeatherDetails = styled.ul`
     position: relative;
     width: 100%;
     margin: 20px 0;
-    padding: 20px 0;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
-    background: rgb(236, 236, 236);
+    background: rgb(231, 235, 235);
 `;
 
 const Forecast = styled.div`
@@ -144,6 +148,10 @@ const Forecast = styled.div`
     border-radius: 5px;
     background: linear-gradient(90deg, rgba(109,191,212,1) 0%, rgba(40,127,199,1) 100%);
     box-sizing: border-box;
+
+    @media (max-width: 768px) {
+        padding: 10px
+    }
 `;
 
 const ForecastNav = styled.div`
@@ -152,15 +160,39 @@ const ForecastNav = styled.div`
     justify-content: space-between;
     align-items: center;
     
-
     h3 {
         margin: 0;
         font-size: 26px;
         color: rgb(255, 255, 255);
+
+        @media (max-width: 768px) {
+            margin-bottom:  10px;
+        }
     }
 
     button {
-        height: 30px;
+        cursor: pointer;
+        width: 170px;
+        height: 36px;
+        font-weight: 600;
+        border: 1px solid rgb(255, 255, 255);
+        border-radius: 5px;
+        background: transparent;
+        color: rgb(255, 255, 255);
+
+        @media (max-width: 768px) {
+            width: 80%;
+            height: 46px;
+            font-size: 18px;
+        }
+
+        @media (max-width: 320px) {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
     }
 `;
 

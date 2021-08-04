@@ -12,7 +12,7 @@ const ForecastDataList = ({ data }) => {
                 const { time, temp, icon, humidity, pressure } = item;
                 return (
                     <li key={uuidv4()}>
-                        <div>{time}</div>
+                        <div className='time'>{time}</div>
                         <div>{temp} &deg;C</div>
                         <div>
                             <img src={`${process.env.PUBLIC_URL}/img/${icon}.png`} alt='img'></img>
@@ -45,17 +45,42 @@ const ForecastDataListBody = styled.ul`
 
     li {
         position: relative;
+        margin: 10px 0;
+        padding: 5px 10px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, .15);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
 
         div {
             text-align: left;
             &:first-child {
                 width: 20%;
+
+                @media (max-width: 768px) {
+                    width: 25%;
+                }
             }
         }
         img {
-            height: 26px;
+            height: 34px;
+
+            @media (max-width: 320px) {
+                height: 26px;
+            }
+        }
+
+        .time {
+            font-weight: 700;
+        }
+
+        @media (max-width: 320px) {
+            font-size: 10px;
         }
     }
 `;

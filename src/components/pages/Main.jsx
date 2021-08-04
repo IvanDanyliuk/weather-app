@@ -65,6 +65,11 @@ const Form = styled.form`
         &:focus {
             outline-width: 0;
         }
+
+        @media (max-width: 768px) {
+            width: 80%;
+            height: 36px;
+        }
     }
     button {
         width: 50px;
@@ -74,6 +79,10 @@ const Form = styled.form`
         color: rgb(98, 161, 253);
         &:hover {
             cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            width: 20%;
         }
     }
 `;
