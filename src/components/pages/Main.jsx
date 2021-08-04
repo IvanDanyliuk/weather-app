@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -28,10 +28,12 @@ const Main = ({weather, fetchWeatherData}) => {
                     <FontAwesomeIcon icon={faCheck} />
                 </button>
             </Form>
-            {weather.today && weather.week ?
-                <WeatherInfo data={weather} /> :
-                <MainPageMessage data={weather} />
-            }
+            <Suspense fallback={<div>Loading...</div>}>
+                {weather.today && weather.week ?
+                    <WeatherInfo data={weather} /> :
+                    <MainPageMessage data={weather} />
+                }
+            </Suspense>
         </MainBody>
     );
 }
