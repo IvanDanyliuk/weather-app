@@ -1,11 +1,11 @@
-import React, { Suspense, useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {fetchWeatherData} from '../../redux/actions/fetchWeatherData';
 import MainPageMessage from '../ui/MainPageMessage';
-const WeatherInfo = React.lazy(() => import('./WeatherInfo'));
+const WeatherInfo = lazy(() => import('./WeatherInfo'));
 
 
 const Main = ({weather, fetchWeatherData}) => {
